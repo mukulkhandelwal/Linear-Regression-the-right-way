@@ -1,9 +1,7 @@
 from numpy import *
 
 
-
-
-def compute_erro_for_line_given_points(b,m,points):
+def compute_error_for_line_given_points(b,m,points):
 
 	#initialize it at 0
 	totalError=0
@@ -61,7 +59,7 @@ def step_gradient(b_current,m_current, points , learningRate):
 
 		b_gradient += -(2/N) * (x * (y - ( m_gradient*x + b_gradient)))
 
-		m_gradient += (2/N) * x * (y - ((m_current*x) + b_current ))
+		m_gradient += -(2/N) * x * (y - ((m_current*x) + b_current ))
 
 
 		#update our b and m values using our partial derivatives
@@ -92,12 +90,13 @@ def run():
 
 	#step3 - train our model
 
-	print 'starting gradient descent at  b ={0},m={1},errpr={2}'.format(initial_b,initial_m,compute_error_for_line_given_points(initial_b,initial_m,points))
+	print("starting gradient descent at  b ={0},m={1},error={2}").format(initial_b,initial_m,compute_error_for_line_given_points(initial_b , initial_m , points))
+	print ("Running...")
 
 	[b,m] = gradient_descent_runner(points,initial_b,initial_m,learning_rate,num_iteration)
 
 
-	print 'ending gradient descent at  b ={1},m={2},errpr={3}'.format(num_iteration,b,m,compute_error_for_line_given_points(b,m,points))
+	print("ending gradient descent at  b = {1} , m = {2} , error = {3}").format(num_iteration,b,m,compute_error_for_line_given_points(b,m,points))
 
 
 if __main__ =='__main__':
