@@ -58,7 +58,7 @@ def step_gradient(b_current,m_current, points , learningRate):
 		#direction with respect to b and m
 		#computing partial derivatives of our error function
 
-		b_gradient += -(2/N) * (x * (y - ( m_current*x + b_current)))
+		b_gradient += -(2/N)  * (y - (( m_current*x) + b_current))
 
 		m_gradient += -(2/N) * x * (y - ((m_current*x) + b_current ))
 
